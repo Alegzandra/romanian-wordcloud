@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-#Citim fișierul csv, ce conține o coloană denumită CONTINUT, cu diverse întrebări
-df = pd.read_csv(r"Intrebari_diverse.csv", encoding="utf8")
+#Citim fișierul excel, ce conține o coloană denumită CONTINUT, cu diverse întrebări tip FAQ
+df = pd.read_excel("Intrebari_frecvente.xlsx")
 
 comment_words = ''
 #lista de cuvinte ce nu vor fi luate in calcul la crearea wordcloud-ului
@@ -18,9 +18,8 @@ STOPWORDS = {'si', 'pentru', 'in', 'ff', 'fif', 'cont', 'cu', 'catev', 'catr', '
                     'toate', 'tu', 'un', 'una', 'unde', 'unei', 'uneia', 'unele', 'uneori', 'unul', 'unu', 'unui',
                     'unuia', 'voi', 'zi-mi', 'te', 'rog', 'o', 'de'}
 stopwords = set(STOPWORDS)
-#print(STOPWORDS)
 
-# iteram coloana CONTINUT a csv-ului
+# iteram coloana CONTINUT a excel-ului
 for val in df.CONTINUT: 
     #fiecare rand devine string si este tokenizat
     val = str(val)
@@ -30,7 +29,7 @@ for val in df.CONTINUT:
         tokens[i] = tokens[i].lower()
     comment_words += " ".join(tokens) + " "
 
-wordcloud = WordCloud(width=1980, height=1080,
+wordcloud = WordCloud(width=1920, height=1080,
                       background_color='white',
                       stopwords=stopwords,
                       min_font_size=10).generate(comment_words)
