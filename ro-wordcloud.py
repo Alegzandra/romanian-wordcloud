@@ -4,7 +4,7 @@ import pandas as pd
 
 
 #Citim fișierul csv, ce conține o coloană denumită CONTINUT, cu diverse întrebări
-df = pd.read_csv(r"Intrebari_diverse.csv", encoding="latin-1")
+df = pd.read_csv(r"Intrebari_diverse.csv", encoding="utf8")
 
 comment_words = ''
 #lista de cuvinte ce nu vor fi luate in calcul la crearea wordcloud-ului
